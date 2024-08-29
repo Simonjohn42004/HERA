@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginactivities.surveyactivities.surveyquestions.Question2">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/questionNumber2"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:layout_marginTop="200dp"
+        android:text="What is your current Weight?"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/questionNumber2"
+        android:id="@+id/answerNumber2"
+        android:layout_marginTop="50dp"
+        android:inputType="numberDecimal"
+        android:textSize="25sp"
+        android:background="@drawable/edit_text_view"
+        android:hint="In Kilograms"
+        android:textColor="@color/white"
+        android:textAlignment="center"/>
+
+</RelativeLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginactivities.surveyactivities.surveyquestions.Question9">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/questionNumber9"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:text="Have you gained weight over the past days?"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/questionNumber9"
+        android:id="@+id/answerNumber9"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/trueButtonAnswer9"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_survey_button"
+            android:text="Yes"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/falseButtonAnswer9"
+            android:layout_width="230dp"
+            android:background="@drawable/custom_survey_button"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="No"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>

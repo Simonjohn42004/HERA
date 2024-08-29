@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".loginactivities.surveyactivities.surveyquestions.Question3">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/questionNumber3"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:text="What is your current height?"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/questionNumber3"
+        android:id="@+id/answerNumber3"
+        android:inputType="numberDecimal"
+        android:textSize="25sp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/edit_text_view"
+        android:hint="In Centimeters"
+        android:textColor="@color/white"
+        android:textAlignment="center"/>
+
+
+
+</RelativeLayout>
