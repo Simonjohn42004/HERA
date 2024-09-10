@@ -1,8 +1,9 @@
 package com.example.hera12.loginactivities.homepageactivities;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -24,6 +25,9 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainHomePage extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+    TextView pcosResult;
+    public String mainResult;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,7 @@ public class MainHomePage extends AppCompatActivity {
         });
 
         bottomNavigationView = findViewById(R.id.homePageBottomViewNavigation);
+
 
 
         //click listener for each item in navigation bar
@@ -61,6 +66,7 @@ public class MainHomePage extends AppCompatActivity {
 
         // set the initial fragment
         setNewHomePageFragment(new TrackMainFragment());
+
 
     }
     // method for replacing each fragment

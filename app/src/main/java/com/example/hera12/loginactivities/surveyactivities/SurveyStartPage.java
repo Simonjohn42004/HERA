@@ -13,6 +13,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.hera12.R;
+import com.example.hera12.loginactivities.database.PatientDatabase;
+import com.example.hera12.loginactivities.homepageactivities.MainHomePage;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SurveyStartPage extends AppCompatActivity {
 
@@ -34,10 +41,10 @@ public class SurveyStartPage extends AppCompatActivity {
         startSurveyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(SurveyStartPage.this, "Moving to survey main page", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(SurveyStartPage.this, SurveyMainPage.class);
                 startActivity(i);
             }
         });
     }
+
 }

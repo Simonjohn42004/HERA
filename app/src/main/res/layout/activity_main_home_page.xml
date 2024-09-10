@@ -4,9 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
+    android:background="@drawable/splash_screen_backgrouond"
     tools:context=".loginactivities.homepageactivities.MainHomePage">
+
+    <TextView
+        android:id="@+id/itemNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Item Name"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/homePageFrameContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <FrameLayout
         android:id="@+id/homePageFrameContainer"
@@ -15,21 +29,22 @@
         app:layout_constraintBottom_toTopOf="@+id/homePageBottomViewNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/itemNameTextView" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/homePageBottomViewNavigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/primary_variant1"
+        app:itemIconSize="25sp"
+        app:itemIconTint="@color/black"
+        app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+        app:itemTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/primary"
-        app:itemTextColor="@color/white"
-        app:itemIconSize="25sp"
-        app:itemIconTint="@color/white"
-        app:menu="@menu/main_navigation_home_page_menu"/>
+        app:menu="@menu/main_navigation_home_page_menu" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

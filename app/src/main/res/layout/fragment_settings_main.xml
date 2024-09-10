@@ -1,14 +1,326 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".loginactivities.homepageactivities.homepagefragments.settingspagefragments.SettingsMainFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
 
-</FrameLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="28dp"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:id="@+id/profileImageView"
+                android:layout_height="100dp"
+                android:background="@drawable/image_view_custom_backgorund"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_launcher_background"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_toRightOf="@id/profileImageView"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Favorite Hobby"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gender, YY Years old"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="28dp"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Body Measurements"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="25dp"/>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content">
+
+                <TableRow android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Weight"
+                        android:textSize="20sp"
+                        android:layout_marginStart="5dp"
+                        android:id="@+id/tableLayoutWeight"
+                        android:textColor="@color/black"/>
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Number"
+                        android:textSize="20sp"
+                        android:id="@+id/tableLayoutCurrentWeight"
+                        android:layout_marginStart="40dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="in KGs"
+                        android:textSize="20sp"
+                        android:id="@+id/tableLayoutWeightChange"
+                        android:layout_marginStart="40dp"
+                        android:textColor="@color/black"/>
+
+
+                </TableRow>
+
+                <TableRow android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Body Fat"
+                        android:textSize="20sp"
+                        android:layout_marginStart="5dp"
+                        android:id="@+id/tableLayoutBodyFat"
+                        android:textColor="@color/black"/>
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Number"
+                        android:textSize="20sp"
+                        android:id="@+id/tableLayoutCurrentBodyFat"
+                        android:layout_marginStart="40dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="in KGs"
+                        android:textSize="20sp"
+                        android:id="@+id/tableLayoutBodyFatChange"
+                        android:layout_marginStart="40dp"
+                        android:textColor="@color/black"/>
+
+
+                </TableRow>
+
+                <TableRow android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Waist"
+                        android:textSize="20sp"
+                        android:layout_marginStart="5dp"
+                        android:id="@+id/tableLayoutWaist"
+                        android:textColor="@color/black"/>
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Number"
+                        android:textSize="20sp"
+                        android:id="@+id/tableLayoutCurrentWaist"
+                        android:layout_marginStart="40dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="in KGs"
+                        android:textSize="20sp"
+                        android:id="@+id/tableLayoutWaistChange"
+                        android:layout_marginStart="40dp"
+                        android:textColor="@color/black"/>
+
+
+                </TableRow>
+
+                <TableRow android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp">
+
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Chest"
+                        android:textSize="20sp"
+                        android:layout_marginStart="5dp"
+                        android:id="@+id/tableLayoutChest"
+                        android:textColor="@color/black"/>
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Number"
+                        android:textSize="20sp"
+                        android:id="@+id/tableLayoutCurrentChest"
+                        android:layout_marginStart="40dp"
+                        android:textColor="@color/black"/>
+
+                    <TextView android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="in KGs"
+                        android:textSize="20sp"
+                        android:id="@+id/tableLayoutChestChange"
+                        android:layout_marginStart="40dp"
+                        android:textColor="@color/black"/>
+
+
+                </TableRow>
+
+            </TableLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="28dp"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Progress Overview"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:layout_margin="10dp"
+                android:id="@+id/progressChart"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="300dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Protien"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:layout_marginStart="5dp"
+                    app:drawableStartCompat="@drawable/baseline_dark_blue_circle_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Carbs"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/black"
+                    app:drawableStartCompat="@drawable/baseline_red_circle_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:drawableStart="@drawable/baseline_yellow_circle_24"
+                    android:text="Fat"
+                    android:textSize="18sp"
+                    android:layout_marginStart="5dp"
+                    tools:ignore="UseCompatTextViewDrawableXml" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <Button
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        android:textStyle="bold"
+        android:id="@+id/editProfileButton"/>
+
+    <Button
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Out"
+        android:textStyle="bold"
+        android:id="@+id/signOutButton"/>
+    </LinearLayout>
+
+</ScrollView>

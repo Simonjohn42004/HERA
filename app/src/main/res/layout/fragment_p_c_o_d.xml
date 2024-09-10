@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_marginTop="20dp"
     android:layout_width="match_parent"
+    android:background="@drawable/splash_screen_backgrouond"
     android:layout_height="match_parent"
     tools:context=".loginactivities.homepageactivities.homepagefragments.trackpagefragments.fragments.pcodtrackpagecalenderfragment.PCODFragment">
 
@@ -12,21 +13,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="28dp"
+        android:background="@drawable/splash_screen_backgrouond"
         android:id="@+id/calenderCardView">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="@drawable/splash_screen_backgrouond"
             android:layout_gravity="center">
 
             <com.google.android.material.tabs.TabLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:tabTextColor="@color/white"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorAnimationMode="elastic"
+                android:layout_marginTop="10dp"
                 android:id="@+id/trackPagePCODPageCalenderTimelineTabLayout"
                 android:background="@drawable/custom_tab_layout"/>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:layout_width="match_parent"
+                android:background="@drawable/splash_screen_backgrouond"
                 android:layout_height="wrap_content"
                 android:id="@+id/trackPagePCODPageViewPager2"/>
 
@@ -36,6 +44,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:layout_marginTop="40dp"
         android:layout_height="wrap_content">
 
     <LinearLayout
@@ -46,10 +55,12 @@
         android:layout_gravity="center">
 
 
+
+
     <FrameLayout
 
         android:layout_width="300dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="100dp"
         android:layout_height="350dp"
         android:layout_gravity="center">
 
@@ -78,6 +89,17 @@
             android:textSize="20sp"
             android:textStyle="bold" />
     </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hello"
+            android:layout_margin="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:id="@+id/pcosModelresult"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -148,9 +170,21 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:text="+ Start Activity"
+        android:id="@+id/foodActivityButton"
+        android:text="Know about your Food"
         android:textSize="20sp"
         android:textStyle="bold"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:id="@+id/exerciseActivityButton"
+            android:text="Know about your Exercise"
+            android:textSize="20sp"/>
+
+
 
     </LinearLayout>
 

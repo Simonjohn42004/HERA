@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "917421016488",
+    "project_id": "hera-1-2",
+    "storage_bucket": "hera-1-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917421016488:android:2341b5308b7295fb67c99d",
+        "android_client_info": {
+          "package_name": "com.example.hera12"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUgvWbhePsySCgYbldN7vUQub7CyWGEUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

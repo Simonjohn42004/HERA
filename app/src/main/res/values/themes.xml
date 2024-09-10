@@ -9,7 +9,7 @@
     <style name="Theme.HERA12" parent="Base.Theme.HERA12" />
 
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="color">@color/primary_variant3</item>
+        <item name="color">@color/primary_variant2</item>
     </style>
 
 </resources>

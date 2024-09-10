@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_margin="20dp"
     android:layout_height="match_parent"
@@ -10,8 +11,11 @@
     <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabTextColor="@color/white"
         android:id="@+id/trackFragmentTabLayout"
-        android:background="@drawable/custom_tab_layout"/>
+        app:tabIndicatorColor="@color/white"
+        app:tabIndicatorAnimationMode="elastic"
+        android:background="@drawable/custom_tab_layout_period_pcod"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"

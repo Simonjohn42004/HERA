@@ -1,82 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:layout_gravity="center"
     android:layout_width="match_parent"
+    android:background="@drawable/splash_screen_backgrouond"
     android:layout_height="match_parent"
-    android:background="@color/Dark_Blue"
     tools:context=".loginactivities.surveyactivities.SurveyMainPage">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Survey Questions"
+        android:textSize="30sp"
+        android:id="@+id/surveyQuestionsHeadText"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/surveyQuestionNumberCount"
+        android:layout_below="@id/surveyQuestionsHeadText"
+        android:text="Question x of 18"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is where questions are asked"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:layout_below="@id/surveyQuestionNumberCount"
+        android:id="@+id/surveyQuestion"
+        android:layout_margin="10dp"/>
+
     <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/surveyQuestionFrameContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/surveyPageButtonContainer"
+        android:layout_below="@id/surveyQuestion"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="431dp">
+
+    </FrameLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:id="@+id/surveyPageButtonContainer">
 
-
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/surveyProgressBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <Button
+            android:layout_width="156dp"
+            android:layout_height="59dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
             android:layout_marginStart="20dp"
-
-            android:layout_marginEnd="20dp" />
-
-        <LinearLayout
-            android:layout_width="398dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/previousQuestionButton"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="30dp"
-            android:orientation="horizontal">
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/survey_page_button"
+            android:drawableStart="@drawable/baseline_arrow_back_24"
+            android:text="Back" />
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:id="@+id/previousQuestionTextButton"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="Back"
-                android:textColor="@color/white"
-                android:textSize="25sp"
-                app:drawableStartCompat="@drawable/baseline_arrow_back_24" />
-
-
-            <TextView
-                android:id="@+id/nextQuestionTextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginStart="230dp"
-                android:clickable="true"
-                android:drawableEnd="@drawable/baseline_arrow_forward_24"
-                android:focusable="true"
-                android:text="Next"
-                android:textColor="@color/white"
-                android:textSize="25sp" />
-
-
-        </LinearLayout>
-
+        <Button
+            android:layout_width="156dp"
+            android:layout_height="59dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/nextQuestionButton"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/survey_page_button"
+            android:text="Next" />
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

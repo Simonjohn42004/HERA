@@ -39,56 +39,111 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="300dp"
+                android:layout_width="316dp"
                 android:layout_height="400dp"
-                android:layout_marginTop="80dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="80dp"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Username"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
 
                 <EditText
+                    android:id="@+id/newAccountUsernameText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/edit_text_view"
-                    android:id="@+id/newAccountUsernameText"
                     android:hint="Enter New Username"
                     android:inputType="textPersonName"
+                    android:textColor="@color/black"
                     android:textSize="25sp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Email"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
                 <EditText
+                    android:id="@+id/newAccoundMailText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:id="@+id/newAccoundMailText"
                     android:background="@drawable/edit_text_view"
                     android:hint="Enter Email"
                     android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
                     android:textSize="25sp" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/newAccountPasswordText"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/edit_text_view"
-                    android:drawableEnd="@drawable/baseline_check_24"
-                    android:hint="Enter Password"
-                    android:inputType="textWebPassword"
-                    android:textSize="25sp" />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:id="@+id/confirmNewAccountPasswordText"
-                    android:background="@drawable/edit_text_view"
-                    android:hint="Confirm Password"
-                    android:inputType="textWebPassword"
-                    android:textSize="25sp" />
-
-                <Button
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Password"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="347dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/newAccountPasswordText"
+                        android:layout_width="270dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_view"
+                        android:hint="Enter Password"
+                        android:inputType="textWebPassword"
+                        android:textColor="@color/black"
+                        android:textSize="25sp" />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:clickable="true"
+                        android:id="@+id/passwordVisibilityImageView"
+                        android:src="@drawable/baseline_visibility_off_24"/>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Confirm Password"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+
+
+
+                    <EditText
+                        android:id="@+id/confirmNewAccountPasswordText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_view"
+                        android:hint="Confirm Password"
+                        android:inputType="textWebPassword"
+                        android:textColor="@color/black"
+                        android:textSize="25sp" />
+
+
+
+
+
+                <Button
                     android:id="@+id/createNewAccountButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:text="Create New Account"
