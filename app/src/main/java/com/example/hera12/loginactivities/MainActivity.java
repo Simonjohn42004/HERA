@@ -25,6 +25,8 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.hera12.R;
 import com.example.hera12.loginactivities.apputils.EmailVerificationAlertBox;
 import com.example.hera12.loginactivities.apputils.emailAndPasswordValidity;
+import com.example.hera12.loginactivities.database.PatientDatabase;
+import com.example.hera12.loginactivities.end2endencryption.AES;
 import com.example.hera12.loginactivities.homepageactivities.MainHomePage;
 import com.example.hera12.loginactivities.surveyactivities.SurveyStartPage;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +38,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
+
+import java.security.KeyStore;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 
@@ -151,8 +156,25 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                                     try {
-                                        // Retrieve the 'hasTakenSurvey' field
-                                        String hasTakenSurveyString = (String) documentSnapshot.get("hasTakenSurvey");
+                                        // Retrieve encrypted data, key, and IV from Firestore
+                                        String encryptedData = documentSnapshot.getString("encryptedData");
+                                        String encryptionKey = documentSnapshot.getString("encryptionKey");
+                                        String iv = documentSnapshot.getString("iv");
+
+                                        // Initialize the AES class and load the key and IV
+                                        AES aes = new AES();
+                                        aes.setKeyString(encryptionKey);
+                                        aes.setIVString(iv);
+                                        aes.initKeyFromString();  // Load the key and IV
+
+                                        // Decrypt the data
+                                        String decryptedData = aes.decrypt(encryptedData);
+                                        // Convert the decrypted JSON string back into a PatientDatabase object
+                                        Gson gson = new Gson();
+                                        PatientDatabase patient = gson.fromJson(decryptedData, PatientDatabase.class);
+
+                                        //Getting the string to check whether the patient has taken the survey or not
+                                        String hasTakenSurveyString = patient.getHasTakenSurvey();
 
                                         if (hasTakenSurveyString != null) {
                                             float hasTakenSurvey = Float.parseFloat(hasTakenSurveyString);
@@ -181,7 +203,6 @@ public class MainActivity extends AppCompatActivity {
                                     } catch (Exception e) {
                                         // Handle parsing errors
                                         Log.e("Survey Error", "Error parsing survey data", e);
-                                        Toast.makeText(MainActivity.this, "Error loading survey data", Toast.LENGTH_SHORT).show();
                                         Intent i = new Intent(MainActivity.this, SurveyStartPage.class);
                                         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(i);

@@ -56,7 +56,6 @@ public class Question18 extends Fragment {
             answerText.setText(String.valueOf(MapSurveyDataBase.patientData.get("Average right Follicle size")));
             answerText.setTextColor(getResources().getColor(R.color.Green, null));
         }
-        thismapTextView.setText(MapSurveyDataBase.patientData.toString());
 
         return myFragment;
     }

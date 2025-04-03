@@ -22,6 +22,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.hera12.R;
 import com.example.hera12.loginactivities.database.MapSurveyDataBase;
 import com.example.hera12.loginactivities.database.PatientDatabase;
+import com.example.hera12.loginactivities.end2endencryption.AES;
 import com.example.hera12.loginactivities.homepageactivities.MainHomePage;
 import com.example.hera12.loginactivities.surveyactivities.surveyquestions.Question1;
 import com.example.hera12.loginactivities.surveyactivities.surveyquestions.Question10;
@@ -44,6 +45,7 @@ import com.example.hera12.loginactivities.surveyactivities.surveyquestions.Quest
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,6 +53,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class SurveyMainPage extends AppCompatActivity {
 
     Button nextBtn,prevBtn;
@@ -195,13 +198,6 @@ public class SurveyMainPage extends AppCompatActivity {
         finish();
     }
 
-    private static void getCloudDocument(Object object) {
-        String userUid = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference userReference = db.collection("Registered Users")
-                .document(userUid);
-        userReference.set(object);
-    }
 
     private static @NonNull PatientDatabase getPatientDatabase() {
 
@@ -252,24 +248,74 @@ public class SurveyMainPage extends AppCompatActivity {
                 "1.0"                    // Some constant or dynamic value
         );
     }
+//
+//
+//    private void storePatientData(PatientDatabase patientDatabase) {
+//        String userUid = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+//        FirebaseFirestore db = FirebaseFirestore.getInstance();
+//        DocumentReference userReference = db.collection("Registered Users").document(userUid);
+//
+//
+//
+//        // Store the data in Firestore
+//        userReference.set(patientDatabase).addOnSuccessListener(aVoid -> {
+//            // Handle success
+//            Toast.makeText(SurveyMainPage.this, "Data successfully stored!", Toast.LENGTH_SHORT).show();
+//        }).addOnFailureListener(e -> {
+//            // Handle failure
+//            Toast.makeText(SurveyMainPage.this, "Error storing data: " + e.getMessage(), Toast.LENGTH_LONG).show();
+//        });
+//    }
 
+
+
+    // Function to store encrypted patient data in Firestore
 
     private void storePatientData(PatientDatabase patientDatabase) {
         String userUid = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference userReference = db.collection("Registered Users").document(userUid);
 
+        // Initialize AES encryption class
+        AES aes = new AES();
+        aes.init(); // Initialize key
 
+        try {
+            // Serialize PatientDatabase to JSON string
+            Gson gson = new Gson();
+            String patientDataJson = gson.toJson(patientDatabase);
 
-        // Store the data in Firestore
-        userReference.set(patientDatabase).addOnSuccessListener(aVoid -> {
-            // Handle success
-            Toast.makeText(SurveyMainPage.this, "Data successfully stored!", Toast.LENGTH_SHORT).show();
-        }).addOnFailureListener(e -> {
-            // Handle failure
-            Toast.makeText(SurveyMainPage.this, "Error storing data: " + e.getMessage(), Toast.LENGTH_LONG).show();
-        });
+            // Encrypt the JSON string
+            String encryptedPatientData = aes.encrypt(patientDataJson);
+
+            // Export the encryption key and IV (you can store this separately or with the user data)
+            aes.exportKey();
+            String encryptionKey = aes.getKeyString();
+            String ivString = aes.getIVString();
+
+            // Create a map to store encrypted data and the encryption parameters
+            Map<String, String> encryptedDataMap = new HashMap<>();
+            encryptedDataMap.put("encryptedData", encryptedPatientData);
+            encryptedDataMap.put("encryptionKey", encryptionKey);
+            encryptedDataMap.put("iv", ivString);
+
+            // Store the encrypted data in Firestore
+            userReference.set(encryptedDataMap).addOnSuccessListener(aVoid -> {
+                // Handle success
+                Toast.makeText(SurveyMainPage.this, "Data successfully stored!", Toast.LENGTH_SHORT).show();
+            }).addOnFailureListener(e -> {
+                // Handle failure
+                Toast.makeText(SurveyMainPage.this, "Error storing data: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            });
+
+        } catch (Exception e) {
+            Log.e("EncryptionError", "Error encrypting patient data", e);
+            Toast.makeText(SurveyMainPage.this, "Error encrypting data", Toast.LENGTH_LONG).show();
+        }
     }
+
+
+
 
 
 

@@ -67,6 +67,9 @@ dependencies {
     annotationProcessor (libs.compiler)
     implementation (libs.security.crypto)
     implementation (libs.gson)
+    implementation (libs.signal.protocol.java)
+    implementation (libs.waveprogressbar)
+    implementation (libs.itext7.core)
 
 
 

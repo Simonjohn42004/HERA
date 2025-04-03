@@ -1,17 +1,18 @@
 [versions]
-agp = "8.6.0"
-compiler = "4.14.2"
+agp = "8.9.0"
+compiler = "4.16.0"
 converterGson = "2.11.0"
-firebaseBom = "33.2.0"  # Managed by BOM
+firebaseBom = "33.5.1"  # Managed by BOM
 glide = "4.16.0"
-glideVersion = "4.14.2"
+glideVersion = "4.16.0"
 gson = "2.11.0"
+itext7Core = "8.0.5"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
-activity = "1.9.1"
+activity = "1.9.3"
 constraintlayout = "2.1.4"
 mpandroidchartVersion = "v3.1.0"
 okhttp = "4.12.0"
@@ -19,10 +20,12 @@ okhttpBom = "4.12.0"
 onnxruntimeAndroid = "1.19.2"
 retrofit = "2.11.0"
 securityCrypto = "1.1.0-alpha06"
-tensorflowLite = "2.3.0"
-tensorflowLiteSupport = "0.1.0"
-tensorflowLiteMetadata = "0.1.0"
-tensorflowLiteGpu = "2.3.0"
+signalProtocolJava = "2.8.1"
+tensorflowLite = "2.16.1"
+tensorflowLiteSupport = "0.4.4"
+tensorflowLiteMetadata = "0.4.4"
+tensorflowLiteGpu = "2.16.1"
+waveprogressbar = "v1.0.0"
 
 [libraries]
 # Removed firebase-admin for Android app
@@ -36,6 +39,7 @@ firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 glide-v4142 = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+itext7-core = { module = "com.itextpdf:itext7-core", version.ref = "itext7Core" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -51,10 +55,12 @@ okhttp3-okhttp = { module = "com.squareup.okhttp3:okhttp" }
 onnxruntime-android = { module = "com.microsoft.onnxruntime:onnxruntime-android", version.ref = "onnxruntimeAndroid" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 security-crypto = { module = "androidx.security:security-crypto", version.ref = "securityCrypto" }
+signal-protocol-java = { module = "org.whispersystems:signal-protocol-java", version.ref = "signalProtocolJava" }
 tensorflow-lite = { module = "org.tensorflow:tensorflow-lite", version.ref = "tensorflowLite" }
 tensorflow-lite-support = { group = "org.tensorflow", name = "tensorflow-lite-support", version.ref = "tensorflowLiteSupport" }
 tensorflow-lite-metadata = { group = "org.tensorflow", name = "tensorflow-lite-metadata", version.ref = "tensorflowLiteMetadata" }
 tensorflow-lite-gpu = { group = "org.tensorflow", name = "tensorflow-lite-gpu", version.ref = "tensorflowLiteGpu" }
+waveprogressbar = { module = "com.github.cjhandroid:WaveProgressBar", version.ref = "waveprogressbar" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

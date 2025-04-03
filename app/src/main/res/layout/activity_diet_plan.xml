@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@drawable/splash_screen_backgrouond"
+    android:background="#D9D8D8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".loginactivities.homepageactivities.homepagefragments.trackpagefragments.fragments.pcodtrackpagecalenderfragment.DietPlanActivity">
@@ -25,8 +25,11 @@
             android:textColor="@color/black"
             android:background="@drawable/edit_text_view"
             android:textSize="16sp"
-            android:inputType="text"
+            android:inputType="textMultiLine"
+            android:minLines="1"
+            android:scrollHorizontally="false"
             android:layout_marginBottom="16dp" />
+
 
         <!-- Calculate Button -->
         <Button
@@ -39,6 +42,83 @@
             android:textColor="#FFFFFF"
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
+
+        <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="28dp"
+            android:id="@+id/totalNutritionCard"
+            android:padding="20dp"
+            android:backgroundTint="@color/primary_variant3">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+
+                <!-- Food Name -->
+                <TextView
+                    android:id="@+id/foodName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Meal nutrition count"
+                    android:textAllCaps="true"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000" />
+
+                <!-- Calories Info -->
+                <TextView
+                    android:id="@+id/calories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Calories: 0"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black" />
+
+                <!-- Protein Info -->
+                <TextView
+                    android:id="@+id/protein"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Protein: 0g"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black" />
+
+                <!-- Fat Info -->
+                <TextView
+                    android:id="@+id/fat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Fat: 0g"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black" />
+
+                <!-- Sugar Info -->
+                <TextView
+                    android:id="@+id/sugar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Sugar: 0g"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"/>
+
+                <!-- Carbohydrates Info -->
+                <TextView
+                    android:id="@+id/carbs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Carbohydrates: 0g"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
         <!-- RecyclerView to display food items in CardView -->
         <androidx.recyclerview.widget.RecyclerView

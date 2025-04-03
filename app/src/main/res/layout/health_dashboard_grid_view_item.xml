@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:backgroundTint="@color/white"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="10dp">
+
+
+
+        <!-- Placeholder for ImageView -->
+        <ImageView
+            android:id="@+id/metricIcon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="centerInside" />
+
+        <!-- Metric Title -->
+        <TextView
+            android:id="@+id/metricTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Metric Title"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center"/>
+
+        <!-- Metric Value -->
+        <TextView
+            android:id="@+id/metricValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

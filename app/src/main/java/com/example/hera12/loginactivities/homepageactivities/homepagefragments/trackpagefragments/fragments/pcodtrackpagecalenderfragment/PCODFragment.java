@@ -2,9 +2,10 @@ package com.example.hera12.loginactivities.homepageactivities.homepagefragments.
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -18,12 +19,15 @@ import android.widget.Toast;
 
 import com.example.hera12.R;
 import com.example.hera12.loginactivities.database.PatientDatabase;
+import com.example.hera12.loginactivities.end2endencryption.AES;
+import com.example.hera12.loginactivities.homepageactivities.homepagefragments.trackpagefragments.fragments.pcodtrackpagecalenderfragment.calendar.PCODCalenderFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -34,7 +38,9 @@ import java.util.Collections;
 import ai.onnxruntime.OnnxTensor;
 import ai.onnxruntime.OrtEnvironment;
 import ai.onnxruntime.OrtSession;
+import cjh.WaveProgressBarlibrary.WaveProgressBar;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class PCODFragment extends Fragment {
 
     PCODFragmentAdapter pcodFragmentAdapter;
@@ -45,6 +51,9 @@ public class PCODFragment extends Fragment {
     TextView pcosResult;
     PatientDatabase patient;
     public String mainResult = "hello";
+    WaveProgressBar waveProgressBar;
+    int progress = 0;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +69,16 @@ public class PCODFragment extends Fragment {
         calenderTimeLineViewPager2.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         calenderTimeLineViewPager2.setAdapter(pcodFragmentAdapter);
         exerciseActivityBtn = view.findViewById(R.id.exerciseActivityButton);
+        waveProgressBar = view.findViewById(R.id.progressBar);
+
+        waveProgressBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progress += 10;
+                waveProgressBar.setProgress(progress);
+            }
+        });
+
 
         calenderTimeLineTabLayout = view.findViewById(R.id.trackPagePCODPageCalenderTimelineTabLayout);
 
@@ -79,9 +98,31 @@ public class PCODFragment extends Fragment {
 
             docRef.get().addOnSuccessListener(documentSnapshot -> {
                 if (documentSnapshot.exists()) {
-                    patient = documentSnapshot.toObject(PatientDatabase.class);
+                    // Retrieve the encrypted data, key, and IV from Firestore
+                    String encryptedData = documentSnapshot.getString("encryptedData");
+                    String encryptionKey = documentSnapshot.getString("encryptionKey");
+                    String iv = documentSnapshot.getString("iv");
+
 
                     try {
+
+                        // Initialize the AES class and load the key and IV
+                        AES aes = new AES();
+                        aes.setKeyString(encryptionKey);
+                        aes.setIVString(iv);
+                        aes.initKeyFromString(); // Load the key and IV from the strings
+
+                        // Decrypt the data
+                        String decryptedData = aes.decrypt(encryptedData);
+                        // Convert the decrypted JSON string back into a PatientDatabase object
+                        Gson gson = new Gson();
+                        patient = gson.fromJson(decryptedData, PatientDatabase.class);
+
+                        // Log the patient data or process it as needed
+                        Log.d("DecryptedData", "Patient Data: " + patient.getLH());
+
+
+
                         // Define the asset file name and destination path in internal storage
                         String assetFileName = "model.onnx";
                         String destinationPath = requireActivity().getApplicationContext().getFilesDir() + "/model.onnx";

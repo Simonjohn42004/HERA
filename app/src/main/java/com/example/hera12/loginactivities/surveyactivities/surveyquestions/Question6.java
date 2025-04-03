@@ -52,7 +52,6 @@ public class Question6 extends Fragment {
             answerText.setText(String.valueOf(MapSurveyDataBase.patientData.get("LH level")));
             answerText.setTextColor(getResources().getColor(R.color.Green, null));
         }
-        mapTextView.setText(MapSurveyDataBase.patientData.toString());
 
         return myFragment;
     }

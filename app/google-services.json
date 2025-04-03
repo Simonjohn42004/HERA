@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "917421016488",
-    "project_id": "hera-1-2",
-    "storage_bucket": "hera-1-2.appspot.com"
+    "project_number": "659435991260",
+    "project_id": "hera-new",
+    "storage_bucket": "hera-new.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:917421016488:android:2341b5308b7295fb67c99d",
+        "mobilesdk_app_id": "1:659435991260:android:b239042dffd49e602b8419",
         "android_client_info": {
           "package_name": "com.example.hera12"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAUgvWbhePsySCgYbldN7vUQub7CyWGEUs"
+          "current_key": "AIzaSyA5fsaSbemFeL1-qIBm7sSdJnDIiFK9yBk"
         }
       ],
       "services": {

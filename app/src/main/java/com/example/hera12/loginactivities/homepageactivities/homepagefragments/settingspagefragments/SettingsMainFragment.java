@@ -1,5 +1,6 @@
 package com.example.hera12.loginactivities.homepageactivities.homepagefragments.settingspagefragments;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.hera12.R;
@@ -31,6 +33,7 @@ public class SettingsMainFragment extends Fragment {
     View myFragment;
     BarChart barChart;
     Button signOutButton;
+    private ImageView profileImageView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,12 +41,49 @@ public class SettingsMainFragment extends Fragment {
         myFragment = inflater.inflate(R.layout.fragment_settings_main, container, false);
 
         signOutButton = myFragment.findViewById(R.id.signOutButton);
+
+        profileImageView = myFragment.findViewById(R.id.profileImageView);
+
+        // Set a click listener for the profile image
+        profileImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showProfilePhotoDialog();
+            }
+        });
+
+
+
         // setting data's on the barchart
         barChart = myFragment.findViewById(R.id.progressChart);
         barChart.setDrawBarShadow(false);
         barChart.getDescription().setEnabled(false);
         barChart.setPinchZoom(false);
         barChart.setDrawGridBackground(true);
+        userDietChart();
+
+
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth userAuth = FirebaseAuth.getInstance();
+                userAuth.signOut();
+                Toast.makeText(getContext(), "Successfully Signed out", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getActivity(), MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+                requireActivity().finish();
+
+            }
+        });
+
+
+
+
+        return myFragment;
+    }
+
+    private void userDietChart() {
         // empty labels so that the names are spread evenly
         String[] labels = {"", "Day X", "Day y", "Day Z", "Day A", "Day B", ""};
         XAxis xAxis = barChart.getXAxis();
@@ -113,26 +153,38 @@ public class SettingsMainFragment extends Fragment {
         barChart.setVisibleXRangeMaximum(6f);
         barChart.groupBars(1f, groupSpace, barSpace);
         barChart.invalidate();
+    }
 
+    private void showProfilePhotoDialog() {
+        // Create the dialog
+        Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.dialog_profile_photo);
 
+        // Set the profile image in the dialog (you can load an actual image if necessary)
+        ImageView dialogProfileImageView = dialog.findViewById(R.id.dialogProfileImageView);
+        dialogProfileImageView.setImageDrawable(profileImageView.getDrawable());
 
-        signOutButton.setOnClickListener(new View.OnClickListener() {
+        // Set Edit Profile button click listener
+        Button btnEditProfile = dialog.findViewById(R.id.btnEditProfile);
+        btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                FirebaseAuth userAuth = FirebaseAuth.getInstance();
-                userAuth.signOut();
-                Toast.makeText(getContext(), "Successfully Signed out", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getActivity(), MainActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(i);
-                requireActivity().finish();
-
+            public void onClick(View v) {
+                // Handle edit profile action
+                dialog.dismiss();
             }
         });
 
+        // Set Delete Profile Photo button click listener
+        Button btnDeleteProfilePhoto = dialog.findViewById(R.id.btnDeleteProfilePhoto);
+        btnDeleteProfilePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle delete profile photo action
+                dialog.dismiss();
+            }
+        });
 
-
-
-        return myFragment;
+        // Show the dialog
+        dialog.show();
     }
 }

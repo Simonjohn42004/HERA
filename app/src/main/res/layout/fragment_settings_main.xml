@@ -31,7 +31,7 @@
                 android:layout_height="100dp"
                 android:background="@drawable/image_view_custom_backgorund"
                 android:layout_margin="5dp"
-                android:src="@drawable/ic_launcher_background"/>
+                android:src="@mipmap/ic_launcher_round"/>
 
 
             <LinearLayout
@@ -88,6 +88,7 @@
                 android:layout_height="wrap_content"
                 android:text="Body Measurements"
                 android:textStyle="bold"
+                android:layout_margin="10dp"
                 android:textColor="@color/black"
                 android:textSize="25dp"/>
 
@@ -250,14 +251,15 @@
                 android:text="Progress Overview"
                 android:textColor="@color/black"
                 android:textSize="25sp"
+                android:layout_margin="10dp"
                 android:textStyle="bold"/>
 
             <com.github.mikephil.charting.charts.BarChart
-                android:layout_margin="10dp"
                 android:id="@+id/progressChart"
                 android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="300dp"/>
+                android:layout_height="332dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -302,7 +304,8 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-    <Button
+
+        <Button
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="5dp"

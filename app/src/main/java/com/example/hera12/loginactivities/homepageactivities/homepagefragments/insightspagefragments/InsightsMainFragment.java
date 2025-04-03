@@ -9,58 +9,68 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hera12.R;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link InsightsMainFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class InsightsMainFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public InsightsMainFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment InsightsMainFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static InsightsMainFragment newInstance(String param1, String param2) {
-        InsightsMainFragment fragment = new InsightsMainFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private LineChart lineChart;
+    private List<Entry> dataEntries;
+    View myFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_insights_main, container, false);
+        myFragment =  inflater.inflate(R.layout.fragment_insights_main, container, false);
+
+        // Initialize the LineChart
+        lineChart = myFragment.findViewById(R.id.chartContainer);
+
+        // Sample data (similar to Swift code)
+        dataEntries = new ArrayList<>();
+        dataEntries.add(new Entry(1f, 20f));
+        dataEntries.add(new Entry(2f, 45f));
+        dataEntries.add(new Entry(3f, 30f));
+        dataEntries.add(new Entry(4f, 60f));
+        dataEntries.add(new Entry(5f, 50f));
+
+        // Load the data into the chart
+        loadLineChart();
+        return myFragment;
+    }
+
+    private void loadLineChart() {
+        // Create a LineDataSet with the data entries
+        LineDataSet lineDataSet = new LineDataSet(dataEntries, "Health Data");
+        lineDataSet.setColor(getResources().getColor(android.R.color.holo_blue_dark));
+        lineDataSet.setLineWidth(2f);
+        lineDataSet.setCircleRadius(5f);
+        lineDataSet.setCircleColor(getResources().getColor(android.R.color.holo_blue_light));
+        lineDataSet.setDrawValues(false);
+
+        // Configure the chart
+        LineData lineData = new LineData(lineDataSet);
+        lineChart.setData(lineData);
+        lineChart.getDescription().setEnabled(false);
+
+        // Customize X and Y axes
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        YAxis leftAxis = lineChart.getAxisLeft();
+        leftAxis.setDrawGridLines(true);
+
+        lineChart.getAxisRight().setEnabled(false);
+        lineChart.invalidate(); // Refresh the chart
+
+
     }
 }

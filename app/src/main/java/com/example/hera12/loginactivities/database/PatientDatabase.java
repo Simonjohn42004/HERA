@@ -220,4 +220,29 @@ public class PatientDatabase {
     public void setHasTakenSurvey(String hasTakenSurvey) {
         this.hasTakenSurvey = hasTakenSurvey;
     }
+
+    @Override
+    public String toString() {
+        return "PatientDatabase{" +
+                "isPregnant='" + isPregnant + '\'' +
+                ", numberOfAbortions='" + numberOfAbortions + '\'' +
+                ", FSH='" + FSH + '\'' +
+                ", LH='" + LH + '\'' +
+                ", FSH_LH='" + FSH_LH + '\'' +
+                ", AMH='" + AMH + '\'' +
+                ", TSH='" + TSH + '\'' +
+                ", Beta1='" + Beta1 + '\'' +
+                ", Beta2='" + Beta2 + '\'' +
+                ", waist='" + waist + '\'' +
+                ", waist_hip_ratio='" + waist_hip_ratio + '\'' +
+                ", hairGrowth='" + hairGrowth + '\'' +
+                ", skinDarkening='" + skinDarkening + '\'' +
+                ", pimples='" + pimples + '\'' +
+                ", leftFollicle='" + leftFollicle + '\'' +
+                ", rightFollicle='" + rightFollicle + '\'' +
+                ", averageLeftFollicleSize='" + averageLeftFollicleSize + '\'' +
+                ", averageRightFollicleSize='" + averageRightFollicleSize + '\'' +
+                ", hasTakenSurvey='" + hasTakenSurvey + '\'' +
+                '}';
+    }
 }
